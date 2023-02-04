@@ -1,0 +1,24 @@
+{
+  "name": "crypto-portfolio",
+  "version": "1.0.0",
+  "description": "App for managing you crypto",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gysen-x/crypto-portfolio.git"
+  },
+  "keywords": [
+    "crypto",
+    "bitcoin",
+    "portfolio"
+  ],
+  "author": "gysen-x",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gysen-x/crypto-portfolio/issues"
+  },
+  "homepage": "https://github.com/gysen-x/crypto-portfolio#readme"
+}
