@@ -1,11 +1,11 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Main({ title }) {
+module.exports = function Portfolio({ title }) {
   return (
     <Layout title={title}>
       <div className="container">
-        <div className=" header__item">Top coins</div>
+        <div className=" header__item">Your Portfolio</div>
 
         <div className="table flex">
           <table className="table_dark">
