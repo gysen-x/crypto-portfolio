@@ -7,9 +7,8 @@ const Main = require('../views/Main');
 const renderTemplate = require('../lib/renderTemplate');
 
 router.get('/', (req, res) => {
-  const title = 'Hello Elbrus';
   try {
-    renderTemplate(Main, { title }, res);
+    renderTemplate(Main, { username: req.session?.user?.name }, res);
   } catch (error) {
     console.log('error', error);
   }
