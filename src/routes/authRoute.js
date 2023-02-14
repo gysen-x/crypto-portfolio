@@ -1,11 +1,11 @@
 const express = require('express');
 
-const bcrypt = require('bcrypt');
-
 const router = express.Router();
+const bcrypt = require('bcrypt');
 const renderComponent = require('../lib/renderTemplate');
 const SignIn = require('../views/SignIn');
 const SignUp = require('../views/SignUp');
+const { User } = require('../../db/models');
 
 router.get('/signin', (req, res) => {
   try {
@@ -28,7 +28,7 @@ router.post('/signin', async (req, res) => {
       res.send({ message: 'Error' });
     }
     req.session.user = { id: userFromDatabase.id, name: userFromDatabase.name };
-    res.status(200).end();
+    res.redirect('/');
   } catch (error) {
     console.log(error);
   }

@@ -7,9 +7,8 @@ const Portfolio = require('../views/Portfolio');
 const renderTemplate = require('../lib/renderTemplate');
 
 router.get('/', (req, res) => {
-  const title = 'Hello Elbrus';
   try {
-    renderTemplate(Portfolio, { title }, res);
+    renderTemplate(Portfolio, { username: req.session?.user?.name }, res);
   } catch (error) {
     console.log('error', error);
   }

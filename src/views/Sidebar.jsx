@@ -1,27 +1,23 @@
 const React = require('react');
 
-function Sidebar() {
+function Sidebar({ username }) {
   return (
     <div className="div">
       <div className="sidebar flex">
         <div className="sidebar__top-wrapper">
           <div className="sidebar__logo logo">
             <a href="/" className="logo__link">
-              <svg width="100px" height="100px" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M20 5H5V20H20V5ZM12.5254 16.1572C12.5254 17.4189 11.7742 18.1536 10.4792 18.1536C9.24243 18.1536 8.49121 17.4189 8.45801 16.2942V16.261H9.67407V16.2859C9.69897 16.7466 9.9729 17.0703 10.4626 17.0703C10.9939 17.0703 11.272 16.7507 11.272 16.1489V12.011H12.5254V16.1572ZM18.2893 16.2153C18.2893 17.4023 17.3679 18.1536 15.8738 18.1536C14.4419 18.1536 13.5371 17.4688 13.4666 16.4062L13.4624 16.3398H14.6702L14.6743 16.3813C14.72 16.8296 15.2056 17.1326 15.907 17.1326C16.5752 17.1326 17.0359 16.813 17.0359 16.3523V16.3481C17.0359 15.9539 16.7412 15.7339 15.9983 15.5803L15.3674 15.4517C14.1223 15.1985 13.5869 14.6174 13.5869 13.7085V13.7043C13.5869 12.592 14.5415 11.8574 15.8696 11.8574C17.2683 11.8574 18.0901 12.5962 18.1689 13.5964L18.1731 13.6504H16.9944L16.9861 13.6006C16.9155 13.1731 16.5005 12.8743 15.8696 12.8743C15.2512 12.8784 14.8403 13.1606 14.8403 13.6089V13.613C14.8403 14.0032 15.1309 14.2356 15.8364 14.3809L16.4714 14.5095C17.7373 14.771 18.2893 15.2773 18.2893 16.2112V16.2153Z"
-                  fill="#afdafc"
-                />
-              </svg>
+              <img className="sidebar__img" src="/img/logo.png" alt="logo" />
             </a>
           </div>
           <div className="sidebar__nav nav">
             <ul className="nav__list list-reset flex">
               <li className="nav__item"><a href="/" className="nav__item-link">Main page</a></li>
-              <li className="nav__item"><a href="/portfolio" className="nav__item-link">Portfolio</a></li>
-              <li className="nav__item"><a href="/" className="nav__item-link">Link</a></li>
+              {username ? (
+                <li className="nav__item"><a href="/portfolio" className="nav__item-link">Portfolio</a></li>
+              ) : (
+                <li className="nav__item"><a href="/auth/signin" className="nav__item-link">Sign in to use portfolio</a></li>
+              )}
             </ul>
           </div>
         </div>
@@ -48,15 +44,28 @@ function Sidebar() {
                 />
               </svg>
             </a>
-            <a href="/" className="sidebar__link" />
           </div>
         </div>
       </div>
       <div className="profile-settings flex">
-        <button className="profile-settings_button profile-button">
-          <span>gysen@gmail.com</span>
-        </button>
-        <button className="profile-settings_button dark-mode">
+        {username ? (
+          <div className="profile-settings_wrapper">
+            <a className="profile-settings_link" href="/profile">
+              <span className="profile-settings_round" />
+              <span>
+                {username}
+              </span>
+              {' '}
+            </a>
+            <a className="profile-settings_link" href="/auth/signout">Sign Out </a>
+          </div>
+        ) : (
+          <div className="profile-settings_wrapper">
+            <a className="profile-settings_link" href="/auth/signin">Sign In</a>
+            <a className="profile-settings_link" href="/auth/signup">Sign Up</a>
+          </div>
+        )}
+        <button className="profile-settings_button dark-mode" type="submit">
           <svg className="dark-mode-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M12.0557 3.59974C12.2752 3.2813 12.2913 2.86484 12.0972 2.53033C11.9031 2.19582 11.5335 2.00324 11.1481 2.03579C6.02351 2.46868 2 6.76392 2 12C2 17.5228 6.47715 22 12 22C17.236 22 21.5313 17.9764 21.9642 12.8518C21.9967 12.4664 21.8041 12.0968 21.4696 11.9027C21.1351 11.7086 20.7187 11.7248 20.4002 11.9443C19.4341 12.6102 18.2641 13 17 13C13.6863 13 11 10.3137 11 6.99996C11 5.73589 11.3898 4.56587 12.0557 3.59974Z"

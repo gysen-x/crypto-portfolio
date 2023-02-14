@@ -1,8 +1,7 @@
 const React = require('react');
 const Sidebar = require('./Sidebar');
 
-module.exports = function Layout(props) {
-  const { children } = props;
+module.exports = function Layout({ children, username }) {
   return (
     <html lang="en">
       <head>
@@ -14,7 +13,7 @@ module.exports = function Layout(props) {
         <link rel="stylesheet" href="/css/style.css" />
       </head>
       <body>
-        <Sidebar />
+        <Sidebar username={username} />
         {children}
       </body>
     </html>

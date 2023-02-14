@@ -4,20 +4,20 @@ const Layout = require('./Layout');
 module.exports = function SignIn({ username }) {
   return (
     <Layout username={username}>
-      <>
-        <h2>Вход на сайт</h2>
-        <form id="signinForm" method="POST" action="/auth/signin">
-          <div className="form-group">
-            <label htmlFor="username">Логин:</label>
-            <input id="username" className="form-control" name="name" type="text" required />
+      <div className="container">
+        <h2 className="form__title">Sign In</h2>
+        <form className="form flex" id="signinForm" method="POST" action="/auth/signin">
+          <div className="form__group flex">
+            <label className="form__label" htmlFor="username">Username</label>
+            <input className="form__input" id="username" name="name" type="text" required />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Пароль:</label>
-            <input id="password" className="form-control" name="password" type="password" required />
+          <div className="form__group flex">
+            <label className="form__label" htmlFor="password">Password</label>
+            <input className="form__input" id="password" name="password" type="password" required />
           </div>
-          <button type="submit" className="btn btn-primary">Войти</button>
+          <button className="form__button edit-form__button" type="submit">Submit</button>
         </form>
-      </>
+      </div>
     </Layout>
   );
 };
