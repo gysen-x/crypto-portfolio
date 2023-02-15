@@ -11,6 +11,8 @@ module.exports = function Layout({ children, username }) {
         <title>Document</title>
         <link rel="stylesheet" href="/css/normalize.css" />
         <link rel="stylesheet" href="/css/style.css" />
+        <script defer src="/js/client.js" />
+        <script defer src="/js/api.js" />
       </head>
       <body>
         <Sidebar username={username} />

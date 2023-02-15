@@ -24,7 +24,7 @@ const sessionConfig = {
   store: new FileStore({}),
   secret: process.env.COOKIE_SECRET,
   resave: false,
-  saveUninitialized: false,
+  saveUnitialized: false,
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     maxAge: 1000 * 60 * 60 * 24 * 10,
