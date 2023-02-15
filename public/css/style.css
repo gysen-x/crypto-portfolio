@@ -154,7 +154,8 @@ body {
 /* Profile settings */
 
 .profile-settings {
-  position: absolute;
+  /* align-items: center; */
+  position: fixed;
   top: 10px;
   right: 10px;
 }
@@ -163,7 +164,8 @@ body {
   display: flex;
 }
 
-.profile-settings_link {
+.profile-settings__link {
+  align-items: baseline;
   height: 32px;
   margin-right: 10px;
   padding: 5px 10px;
@@ -175,15 +177,16 @@ body {
   cursor: pointer;
 }
 
-/* .profile-settings_round {
+.profile-settings__round {
+  margin-right: 10px;
   display: block;
   width: 5px;
   height: 5px;
   border-radius: 10px;
   background-color: #00d1ff;
-} */
+}
 
-.profile-settings_button {
+.profile-settings__button {
   height: 32px;
   line-height: 14px;
   padding: 5px 10px;
@@ -194,7 +197,7 @@ body {
   cursor: pointer;
 }
 
-.profile-settings_button:not(:last-child) {
+.profile-settings__button:not(:last-child) {
   margin-right: 10px;
 }
 
@@ -217,7 +220,7 @@ body {
 }
 
 .container {
-  padding: 100px 160px 100px 260px;
+  padding: 100px 30px 100px 190px;
 }
 
 .header {
@@ -234,16 +237,20 @@ body {
 
 /* Table */
 
+.table-container {
+  justify-content: center;
+}
+
 .table {
   flex-direction: column;
   margin-right: 30px;
 }
 
 .table_dark {
-  width: 640px;
+  width: 740px;
   margin-bottom: 20px;
   border-top: 3px solid var(--light-blue-color);
-  font-family: "Inter", Sans-Serif;
+  font-family: "GT-America", Sans-Serif;
   font-size: 14px;
   text-align: right;
   border-collapse: collapse;
@@ -319,6 +326,7 @@ body {
   background-color: rgb(22, 27, 68);
   box-shadow: rgb(237 30 255 / 60%) 0px 0px 15px;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .edit-form__button:hover {
@@ -331,20 +339,34 @@ body {
 .main-wrapper {
   flex-direction: column;
   align-items: center;
+  margin: auto;
+  width: 66%;
 }
 
 
+/* portfolio */
+
+.portfolio-title {
+  margin-left: 11%;
+}
+
+.profit-loss-dollar,
+.holdings-dollar {
+  margin-right: 10px;
+}
 
 /* Sign In/Sign Up */
 
 .form__title {
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .form {
   flex-direction: column;
   gap: 20px;
   width: 250px;
+  margin: 0 auto;
   padding: 30px;
   border: 2px solid var(--blue-color);
   border-top: 3px solid var(--light-blue-color);
@@ -372,7 +394,6 @@ body {
 }
 
 .form__button {
-  width: 90%;
   margin-top: 20px;
 }
 
@@ -398,4 +419,12 @@ body {
 .container-404 {
   flex-direction: column;
   align-items: center;
+}
+
+.table_dark td.green {
+  color: green;
+}
+
+.table_dark td.red {
+  color: tomato;
 }
