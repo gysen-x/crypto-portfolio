@@ -9,72 +9,7 @@ module.exports = function Portfolio({ username }) {
         <div className="table-container flex">
 
           <div className="table flex">
-            <table className="table_dark table_portfolio">
-              <tr>
-                <th>Coin</th>
-                <th>Price</th>
-                <th>Holdings</th>
-                <th>Avg. Price</th>
-                <th>Profit/Loss</th>
-              </tr>
-              <tr>
-                <td>
-                  <span className="coin-logo">
-                    <img className="coin-logo" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC logo" />
-                  </span>
-                  <span className="coin-name">Bitcoin</span>
-                  <span className="coin-short">BTC</span>
-                </td>
-                <td>$30000</td>
-                <td>
-                  <span className="holdings-dollar">$20000</span>
-                  <span className="holdings-coins">0.7BTC</span>
-                </td>
-                <td>$30.000</td>
-                <td>
-                  <span className="profit-loss-dollar">$-343</span>
-                  <span className="profit-loss-percent">-12%</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className="coin-logo">
-                    <img className="coin-logo" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC logo" />
-                  </span>
-                  <span className="coin-name">Bitcoin</span>
-                  <span className="coin-short">BTC</span>
-                </td>
-                <td>$30000</td>
-                <td>
-                  <span className="holdings-dollar">$20000</span>
-                  <span className="holdings-coins">0.7BTC</span>
-                </td>
-                <td>$30.000</td>
-                <td>
-                  <span className="profit-loss-dollar">$-343</span>
-                  <span className="profit-loss-percent">-12%</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className="coin-logo">
-                    <img className="coin-logo" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC logo" />
-                  </span>
-                  <span className="coin-name">Bitcoin</span>
-                  <span className="coin-short">BTC</span>
-                </td>
-                <td>$30000</td>
-                <td>
-                  <span className="holdings-dollar">$20000</span>
-                  <span className="holdings-coins">0.7BTC</span>
-                </td>
-                <td>$30.000</td>
-                <td>
-                  <span className="profit-loss-dollar">$-343</span>
-                  <span className="profit-loss-percent">-12%</span>
-                </td>
-              </tr>
-            </table>
+            <table id="table_portfolio" className="table_dark table_portfolio" />
           </div>
 
           <div className="table-form-box">
@@ -84,7 +19,7 @@ module.exports = function Portfolio({ username }) {
                 <label className="form__label" htmlFor="coin">Coin</label>
                 <select className="form__input" name="coin" id="coin">
                   <option value="Bitcoin">Bitcoin</option>
-                  <option value="Etherium">Etherium</option>
+                  <option value="Ethereum">Ethereum</option>
                   <option value="Cardano">Cardano</option>
                   <option value="Cosmos">Cosmos</option>
                   <option value="Bitcoin">Bitcoin</option>

@@ -28,7 +28,7 @@ router.post('/signin', async (req, res) => {
       res.send({ message: 'Error' });
     }
     req.session.user = { id: userFromDatabase.id, name: userFromDatabase.name };
-    res.redirect('/');
+    res.status(200).end();
   } catch (error) {
     console.log(error);
   }
