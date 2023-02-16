@@ -13,6 +13,7 @@ module.exports = function Layout({ children, username }) {
         <link rel="stylesheet" href="/css/normalize.css" />
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="stylesheet" href="/css/dark.css" />
+        <link rel="stylesheet" href="/css/adaptive.css" />
         <script defer src="/js/dark.js" />
         <script defer src="/js/client.js" />
         <script defer src="/js/api.js" />
