@@ -435,3 +435,11 @@ body {
   color: rgb(196, 63, 39);
   text-shadow: rgb(196, 63, 39) 0 0 4px;
 }
+
+.error {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(196, 63, 39);
+  text-shadow: rgb(196, 63, 39) 0 0 4px;
+}

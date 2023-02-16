@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
                   </td>
                   <td>${coin.currentPrice.toFixed(2).toLocaleString()}</td>
                   <td>$ ${coin.transactionTotal.toLocaleString()}</td>
-                  <td>${coin.transactionAmount}${coin.symbol.toUpperCase()}</td>
+                  <td>${coin.transactionAmount}</td>
                   <td>$ ${coin.averagePrice.toFixed(2).toLocaleString()}</td>
                   <td>${coin.pnlDollars.toFixed(2).toLocaleString()}</td>
                   <td class="${coin.pnlPercent >= 0 ? 'green' : 'red'}">${coin.pnlPercent.toFixed(2)} %</td>
