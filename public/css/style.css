@@ -428,8 +428,10 @@ body {
 
 .table_dark td.green {
   color: green;
+  text-shadow: green 0 0 4px;
 }
 
 .table_dark td.red {
-  color: tomato;
+  color: rgb(196, 63, 39);
+  text-shadow: rgb(196, 63, 39) 0 0 4px;
 }

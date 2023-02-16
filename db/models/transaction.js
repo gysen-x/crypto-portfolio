@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   Transaction.init({
     amount: DataTypes.FLOAT,
     price: DataTypes.FLOAT,
+    spent: DataTypes.FLOAT,
     date: DataTypes.DATEONLY,
     coin_id: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER,

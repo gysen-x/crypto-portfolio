@@ -16,7 +16,7 @@ module.exports = function SignIn({ username }) {
               <label className="form__label" htmlFor="password">Password</label>
               <input className="form__input" id="password" name="password" type="password" required />
             </div>
-            <button className="form__button edit-form__button" type="submit">Submit</button>
+            <button className="form__button edit-form__button" id="signin-submit" type="submit">Submit</button>
           </form>
         </div>
       </div>

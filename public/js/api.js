@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', async (event) => {
           if (data) {
             elemFinal.currentPrice = data.current_price;
             elemFinal.priceChange = data.price_change_24h;
-            elemFinal.holdingsDollars = data.current_price * elemFinal.totalAmount;
-            elemFinal.averagePrice = elemFinal.totalDollars / elemFinal.totalAmount,
-            elemFinal.pnlDollars = (elemFinal.totalAmount * data.current_price) - elemFinal.totalDollars;
-            elemFinal.pnlPercent = elemFinal.totalAmount * data.current_price * (1 - (elemFinal.totalDollars / 100));
+            elemFinal.holdingsDollars = data.current_price * elemFinal.transactionAmount;
+            elemFinal.averagePrice = elemFinal.transactionTotal / elemFinal.transactionAmount,
+            elemFinal.pnlDollars = (elemFinal.transactionAmount * data.current_price) - elemFinal.transactionTotal;
+            elemFinal.pnlPercent = 100 / ((data.current_price * elemFinal.transactionAmount) / ((elemFinal.transactionAmount * data.current_price) - elemFinal.transactionTotal));
             elemFinal.image = data.image;
             elemFinal.symbol = data.symbol;
           }
@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', async (event) => {
               <tr>
                   <th>Coin</th>
                   <th>Price</th>
-                  <th>Holdings</th>
+                  <th>Hold $</th>
+                  <th>Coins</th>
                   <th>Avg.Price</th>
                   <th>PNL $</th>
                   <th>PNL %</th>
@@ -51,20 +52,18 @@ document.addEventListener('DOMContentLoaded', async (event) => {
                     <span class="coin-short">${coin.symbol}</span>
                   </td>
                   <td>${coin.currentPrice.toFixed(2).toLocaleString()}</td>
-                  <td class="flex">
-                    <span class="holdings-dollar">$${coin.totalDollars.toLocaleString()}</span>
-                    <span class="holdings-coins">${coin.totalAmount}${coin.symbol.toUpperCase()}</span>
-                  </td>
-                  <td>$${coin.averagePrice.toFixed(2).toLocaleString()}</td>
+                  <td>$ ${coin.transactionTotal.toLocaleString()}</td>
+                  <td>${coin.transactionAmount}${coin.symbol.toUpperCase()}</td>
+                  <td>$ ${coin.averagePrice.toFixed(2).toLocaleString()}</td>
                   <td>${coin.pnlDollars.toFixed(2).toLocaleString()}</td>
-                  <td>${coin.pnlPercent.toFixed(2)}%</td>
+                  <td class="${coin.pnlPercent >= 0 ? 'green' : 'red'}">${coin.pnlPercent.toFixed(2)} %</td>
                 </tr>
                 `
   ))}
               `;
 
         coinSelect.innerHTML = `
-              ${serverData.map((coin) => (
+              ${coinData.map((coin) => (
     `
                 <option value="${coin.name}">${coin.name}</option>
                 `

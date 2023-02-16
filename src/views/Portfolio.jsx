@@ -17,16 +17,7 @@ module.exports = function Portfolio({ username }) {
               <h2 className="form__title">Enter amount</h2>
               <div className="form__group flex">
                 <label className="form__label" htmlFor="coin">Coin</label>
-                <select className="form__input" name="coin" id="coin">
-                  <option value="Bitcoin">Bitcoin</option>
-                  <option value="Ethereum">Ethereum</option>
-                  <option value="Cardano">Cardano</option>
-                  <option value="Cosmos">Cosmos</option>
-                  <option value="Bitcoin">Bitcoin</option>
-                  <option value="Etherium">Etherium</option>
-                  <option value="Cardano">Cardano</option>
-                  <option value="Cosmos">Cosmos</option>
-                </select>
+                <select className="form__input" name="coin" id="coin" />
               </div>
               <div className="form__group flex">
                 <label className="form__label" htmlFor="amount">Amount</label>
@@ -37,7 +28,7 @@ module.exports = function Portfolio({ username }) {
                 <input className="form__input" id="price" name="price" type="text" required />
               </div>
               <div className="form__group flex">
-                <label className="form__label" htmlFor="date">Price</label>
+                <label className="form__label" htmlFor="date">Date</label>
                 <input className="form__input" id="date" name="date" type="date" required />
               </div>
 
