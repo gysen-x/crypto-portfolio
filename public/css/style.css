@@ -77,6 +77,11 @@ body {
   display: flex;
 }
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Sidebar */
 
 .sidebar {
@@ -347,7 +352,7 @@ body {
 /* portfolio */
 
 .portfolio-title {
-  margin-left: 11%;
+  margin-left: 10%;
 }
 
 .profit-loss-dollar,
