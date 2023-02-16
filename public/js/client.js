@@ -1,7 +1,6 @@
 const signupForm = document.querySelector('#signup-form');
 const signinForm = document.querySelector('#signin-form');
 const portfolioForm = document.forms.portfolioform;
-console.log('portfolioForm: ', portfolioForm);
 
 signupForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -56,20 +55,20 @@ signinForm?.addEventListener('submit', async (event) => {
   }
 });
 
-portfolioForm?.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const coin = portfolioForm[0].value;
-  const amount = portfolioForm[1].value;
-  const price = portfolioForm[2].value;
-  const date = portfolioForm[3].value;
-  const data = {
-    coin, amount, price, date,
-  };
-  const response = await fetch('/portfolio', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-  const result = await response.json();
-  console.log('response: ', result.transactionDataBase);
-});
+// portfolioForm?.addEventListener('submit', async (event) => {
+//   event.preventDefault();
+//   const coin = portfolioForm[0].value;
+//   const amount = portfolioForm[1].value;
+//   const price = portfolioForm[2].value;
+//   const date = portfolioForm[3].value;
+//   const data = {
+//     coin, amount, price, date,
+//   };
+//   const response = await fetch('/portfolio', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(data),
+//   });
+//   const result = await response.json();
+//   console.log('response: ', result.transactionDataBase);
+// });

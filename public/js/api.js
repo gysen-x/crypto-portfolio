@@ -98,6 +98,75 @@ document.addEventListener('DOMContentLoaded', async (event) => {
   ))}
       `;
       }
+
+      //= ===================================
+      const portfolioForm = document.forms.portfolioform;
+      portfolioForm?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const coin = portfolioForm[0].value;
+        const amount = portfolioForm[1].value;
+        const price = portfolioForm[2].value;
+        const date = portfolioForm[3].value;
+        const data = {
+          coin, amount, price, date,
+        };
+        const response = await fetch('/portfolio', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        if (result.message === 'Ok!') {
+          const response = await fetch('/portfolio/transactions');
+          const transactionsData = await response.json();
+          const serverData = transactionsData.result;
+          console.log('coinData: ', coinData);
+
+          serverData.forEach((elemFinal) => {
+            const data = coinData.find((el) => elemFinal.name === el.name);
+            if (data) {
+              elemFinal.currentPrice = data.current_price;
+              elemFinal.priceChange = data.price_change_24h;
+              elemFinal.holdingsDollars = data.current_price * elemFinal.transactionAmount;
+              elemFinal.averagePrice = elemFinal.transactionTotal / elemFinal.transactionAmount,
+              elemFinal.pnlDollars = (elemFinal.transactionAmount * data.current_price) - elemFinal.transactionTotal;
+              elemFinal.pnlPercent = 100 / ((data.current_price * elemFinal.transactionAmount) / ((elemFinal.transactionAmount * data.current_price) - elemFinal.transactionTotal));
+              elemFinal.image = data.image;
+              elemFinal.symbol = data.symbol;
+            }
+          });
+          tablePortfolio.innerHTML = `
+              <tr>
+                  <th>Coin</th>
+                  <th>Price</th>
+                  <th>Hold $</th>
+                  <th>Coins</th>
+                  <th>Avg.Price</th>
+                  <th>PNL $</th>
+                  <th>PNL %</th>
+              </tr>
+              ${serverData.map((coin) => (
+    `
+              <tr>
+                  <td>
+                    <span class="coin-logo">
+                      <img class="coin-logo" src="${coin.image}"  alt="${coin.symbol} logo" />
+                    </span>
+                    <span class="coin-name">${coin.name}</span>
+                    <span class="coin-short">${coin.symbol}</span>
+                  </td>
+                  <td>${coin.currentPrice.toFixed(2).toLocaleString()}</td>
+                  <td>$ ${coin.transactionTotal.toLocaleString()}</td>
+                  <td>${coin.transactionAmount}</td>
+                  <td>$ ${coin.averagePrice.toFixed(2).toLocaleString()}</td>
+                  <td>${coin.pnlDollars.toFixed(2).toLocaleString()}</td>
+                  <td class="${coin.pnlPercent >= 0 ? 'green' : 'red'}">${coin.pnlPercent.toFixed(2)} %</td>
+                </tr>
+                `
+  ))}
+              `;
+        }
+      });
     } catch (error) {
       console.error(error);
     }

@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
     const transactionDataBase = await Transaction.create({
       user_id: req.session.user.id, coin_id: coinId.id, amount, price, spent: amount * price, date,
     });
-    res.json({ transactionDataBase });
+    res.status(200).json({ message: 'Ok!' });
   } catch (error) {
     console.log(error);
   }
@@ -34,9 +34,8 @@ router.post('/', async (req, res) => {
 router.get('/transactions', async (req, res) => {
   try {
     const holdingsDB = await Coin.findAll({
-      include: [{ model: Transaction }],
+      include: [{ model: Transaction, where: { user_id: req.session.user.id } }],
     });
-
     console.log('holdingsDB: ', holdingsDB[0]);
     const totalCoins = holdingsDB.map((elem) => elem?.Transactions?.reduce((acc, el) => acc + el.amount, 0));
     const totalPrice = holdingsDB.map((elem) => elem?.Transactions?.reduce((acc, el) => acc + el.price, 0));
@@ -48,9 +47,7 @@ router.get('/transactions', async (req, res) => {
       transactionTotal: totalSpent[index],
     });
     const result = allCoinsArray.filter((elem) => (elem.transactionAmount > 0));
-
     console.log('result: ', result);
-
     res.json({ result });
   } catch (error) {
     console.log(error);
