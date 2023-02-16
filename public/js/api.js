@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', async (event) => {
                   <th>Coin</th>
                   <th>Price</th>
                   <th>Hold $</th>
-                  <th>Coins</th>
-                  <th>Avg.Price</th>
-                  <th>PNL $</th>
+                  <th class="adaptive">Coins</th>
+                  <th class="adaptive">Avg.Price</th>
+                  <th class="adaptive375">PNL $</th>
                   <th>PNL %</th>
               </tr>
               ${serverData.map((coin) => (
@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', async (event) => {
                   </td>
                   <td>${coin.currentPrice.toFixed(2).toLocaleString()}</td>
                   <td>$ ${coin.transactionTotal.toLocaleString()}</td>
-                  <td>${coin.transactionAmount}</td>
-                  <td>$ ${coin.averagePrice.toFixed(2).toLocaleString()}</td>
-                  <td>${coin.pnlDollars.toFixed(2).toLocaleString()}</td>
+                  <td class="adaptive">${coin.transactionAmount}</td>
+                  <td class="adaptive">$ ${coin.averagePrice.toFixed(2).toLocaleString()}</td>
+                  <td class="adaptive375">${coin.pnlDollars.toFixed(2).toLocaleString()}</td>
                   <td class="${coin.pnlPercent >= 0 ? 'green' : 'red'}">${coin.pnlPercent.toFixed(2)} %</td>
                 </tr>
                 `
@@ -77,9 +77,9 @@ document.addEventListener('DOMContentLoaded', async (event) => {
       <tr>
       <th>Coin</th>
       <th>Price</th>
-      <th>Volume</th>
+      <th class="adaptive500">Volume</th>
       <th>24H</th>
-      <th>Market Cap</th>
+      <th class="adaptive1000">Market Cap</th>
     </tr>
     ${coinData.map((coin) => (
     `<tr>
@@ -91,9 +91,9 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         <span class="coin-short">${coin.symbol}</span>
       </td>
       <td>$${coin.current_price.toFixed(2)}</td>
-      <td>$${coin.total_volume.toLocaleString()}</td>
+      <td class="adaptive500">$${coin.total_volume.toLocaleString()}</td>
       <td class="${coin.price_change_percentage_24h >= 0 ? 'green' : 'red'}">${coin.price_change_percentage_24h.toFixed(2)}%</td>
-      <td>$${coin.market_cap.toLocaleString()}</td>
+      <td class="adaptive1000">$${coin.market_cap.toLocaleString()}</td>
     </tr>`
   ))}
       `;

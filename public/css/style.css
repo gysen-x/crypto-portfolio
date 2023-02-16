@@ -225,7 +225,7 @@ body {
 }
 
 .container {
-  padding: 100px 30px 100px 190px;
+  padding: 100px 30px 100px 100px;
 }
 
 .header {
@@ -243,7 +243,7 @@ body {
 /* Table */
 
 .table-container {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .table {
@@ -252,7 +252,7 @@ body {
 }
 
 .table_dark {
-  width: 740px;
+  /* min-width: 740px; */
   margin-bottom: 20px;
   border-top: 3px solid var(--light-blue-color);
   font-family: "GT-America", Sans-Serif;
@@ -351,8 +351,8 @@ body {
 
 /* portfolio */
 
-.portfolio-title {
-  margin-left: 10%;
+.portfolio-table-wrapper {
+  padding-left: 8%;
 }
 
 .profit-loss-dollar,
@@ -370,7 +370,7 @@ body {
 .form {
   flex-direction: column;
   gap: 20px;
-  width: 250px;
+  max-width: 250px;
   margin: 0 auto;
   padding: 30px;
   border: 2px solid var(--blue-color);

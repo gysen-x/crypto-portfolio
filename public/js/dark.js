@@ -1,5 +1,10 @@
-const moonButton = document.querySelector('#moonButton');
+function applyTheme(theme) {
+  document.body.classList.remove('theme-auto', 'theme-light', 'theme-dark');
+  document.body.classList.add(`theme-${theme}`);
+}
 
-moonButton.addEventListener('click', (event) => {
-
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('#theme').addEventListener('change', function () {
+    applyTheme(this.value);
+  });
 });
