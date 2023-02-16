@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
   try {
     const coinId = await Coin.findOne({ where: { name: coin } });
     const transactionDataBase = await Transaction.create({
-      user_id: req.session.user.id, coin_id: coinId.id, amount, price, date,
+      user_id: req.session.user.id, coin_id: coinId.id, amount, price, spent: amount * price, date,
     });
     res.json({ transactionDataBase });
   } catch (error) {
@@ -39,13 +39,15 @@ router.get('/transactions', async (req, res) => {
 
     console.log('holdingsDB: ', holdingsDB[0]);
     const totalCoins = holdingsDB.map((elem) => elem?.Transactions?.reduce((acc, el) => acc + el.amount, 0));
-    const totalSpent = holdingsDB.map((elem) => elem?.Transactions?.reduce((acc, el) => acc + el.price, 0));
+    const totalPrice = holdingsDB.map((elem) => elem?.Transactions?.reduce((acc, el) => acc + el.price, 0));
+    const totalSpent = holdingsDB.map((elem) => elem?.Transactions?.reduce((acc, el) => acc + el.spent, 0));
     const allCoinsArray = holdingsDB.map((coin, index) => coin = {
       name: coin.name,
-      totalAmount: totalCoins[index],
-      totalDollars: totalSpent[index],
+      transactionAmount: totalCoins[index],
+      transactionPrice: totalPrice[index],
+      transactionTotal: totalSpent[index],
     });
-    const result = allCoinsArray.filter((elem) => (elem.totalAmount > 0));
+    const result = allCoinsArray.filter((elem) => (elem.transactionAmount > 0));
 
     console.log('result: ', result);
 
