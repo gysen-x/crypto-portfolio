@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', async (event) => {
                   <th>Price</th>
                   <th>Holdings</th>
                   <th>Avg.Price</th>
-                  <th>Profit/Loss</th>
+                  <th>PNL $</th>
+                  <th>PNL %</th>
               </tr>
               ${serverData.map((coin) => (
     `
@@ -50,15 +51,13 @@ document.addEventListener('DOMContentLoaded', async (event) => {
                     <span class="coin-short">${coin.symbol}</span>
                   </td>
                   <td>${coin.currentPrice.toFixed(2).toLocaleString()}</td>
-                  <td class="space-between">
+                  <td class="flex">
                     <span class="holdings-dollar">$${coin.totalDollars.toLocaleString()}</span>
                     <span class="holdings-coins">${coin.totalAmount}${coin.symbol.toUpperCase()}</span>
                   </td>
                   <td>$${coin.averagePrice.toFixed(2).toLocaleString()}</td>
-                  <td class="space-between">
-                    <span class="profit-loss-dollar">$${coin.pnlDollars.toFixed(2).toLocaleString()}</span>
-                    <span class="profit-loss-percent">${coin.pnlPercent.toFixed(2)}%</span>
-                  </td>
+                  <td>${coin.pnlDollars.toFixed(2).toLocaleString()}</td>
+                  <td>${coin.pnlPercent.toFixed(2)}%</td>
                 </tr>
                 `
   ))}

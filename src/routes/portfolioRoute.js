@@ -40,11 +40,13 @@ router.get('/transactions', async (req, res) => {
     console.log('holdingsDB: ', holdingsDB[0]);
     const totalCoins = holdingsDB.map((elem) => elem?.Transactions?.reduce((acc, el) => acc + el.amount, 0));
     const totalSpent = holdingsDB.map((elem) => elem?.Transactions?.reduce((acc, el) => acc + el.price, 0));
-    const result = holdingsDB.map((coin, index) => coin = {
+    const allCoinsArray = holdingsDB.map((coin, index) => coin = {
       name: coin.name,
       totalAmount: totalCoins[index],
       totalDollars: totalSpent[index],
     });
+    const result = allCoinsArray.filter((elem) => (elem.totalAmount > 0));
+
     console.log('result: ', result);
 
     res.json({ result });
