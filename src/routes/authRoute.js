@@ -17,15 +17,16 @@ router.get('/signin', (req, res) => {
 
 router.post('/signin', async (req, res) => {
   const { name, password } = req.body;
+  console.log('req.body: ', req.body);
   // console.log('name, password: ', name, password);
 
   try {
     const userFromDatabase = await User.findOne({ where: { name }, raw: true });
-    // if (!userFromDatabase) return res.status(401).json({ err });
+    if (!userFromDatabase) return res.status(401).json({ message: 'Wrong username or password!' });
 
     const isSamePassword = await bcrypt.compare(password, userFromDatabase.password);
     if (!isSamePassword) {
-      res.send({ message: 'Error' });
+      res.status(400).json({ message: 'Wrong username or password!' });
     }
     req.session.user = { id: userFromDatabase.id, name: userFromDatabase.name };
     res.status(200).end();

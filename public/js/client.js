@@ -1,6 +1,7 @@
 const signupForm = document.querySelector('#signup-form');
-const signinForm = document.querySelector('#signinForm');
-console.log('signinForm: ', signinForm);
+const signinForm = document.querySelector('#signin-form');
+const portfolioForm = document.forms.portfolioform;
+console.log('portfolioForm: ', portfolioForm);
 
 signupForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -30,17 +31,45 @@ signinForm?.addEventListener('submit', async (event) => {
     const name = signinForm.querySelector('#username').value;
     const password = signinForm.querySelector('#password').value;
     const data = { name, password };
+    // console.log('data: ', data);
     try {
       const response = await fetch('/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      const result = await response.json();
-      console.log('result: ', result);
-      window.location = '/';
+      if (response.status !== 200) {
+        const errorDiv = signinForm.querySelector('#error');
+        const errorMessage = document.createElement('p');
+        errorMessage.classList.add('error');
+        const dataLog = await response.json();
+        errorMessage.innerText = dataLog.message;
+        errorDiv.appendChild(errorMessage);
+      } else {
+        response.json();
+        window.location = '/';
+      }
+      // console.log('result: ', result);
     } catch (error) {
       console.log(error);
     }
   }
+});
+
+portfolioForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const coin = portfolioForm[0].value;
+  const amount = portfolioForm[1].value;
+  const price = portfolioForm[2].value;
+  const date = portfolioForm[3].value;
+  const data = {
+    coin, amount, price, date,
+  };
+  const response = await fetch('/portfolio', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  const result = await response.json();
+  console.log('response: ', result.transactionDataBase);
 });
