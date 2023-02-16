@@ -13,6 +13,9 @@ const mainRoute = require('./routes/mainRoute');
 const portfolioRoute = require('./routes/portfolioRoute');
 const authRoute = require('./routes/authRoute');
 
+const renderComponent = require('./lib/renderTemplate');
+const PageNotFound = require('./views/PageNotFound');
+
 const PORT = process.env.PORT ?? 3000;
 
 const app = express(); // create server
@@ -49,6 +52,14 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', mainRoute);
 app.use('/auth', authRoute);
 app.use('/portfolio', portfolioRoute);
+
+app.get('*', (req, res) => {
+  try {
+    renderComponent(PageNotFound, { username: req.session?.user?.name }, res);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // start server
 app.listen(PORT, () => { console.log(`server started on http://localhost:${PORT}`); });

@@ -1,5 +1,6 @@
 const tableTopCoins = document.querySelector('#table-top-coins');
 const tablePortfolio = document.querySelector('#table_portfolio');
+const coinSelect = document.querySelector('#coin');
 
 document.addEventListener('DOMContentLoaded', async (event) => {
   const getData = async () => {
@@ -7,46 +8,70 @@ document.addEventListener('DOMContentLoaded', async (event) => {
       const res = await fetch(
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false',
       );
-      // res.json().then(console.log);
       const coinData = await res.json();
-      // console.log('coinData: ', coinData);
 
       if (tablePortfolio) {
         const response = await fetch('/portfolio/transactions');
         const transactionsData = await response.json();
-        console.log('transactionsData: ', transactionsData);
+        const serverData = transactionsData.result;
+        console.log('coinData: ', coinData);
+
+        serverData.forEach((elemFinal) => {
+          const data = coinData.find((el) => elemFinal.name === el.name);
+          if (data) {
+            elemFinal.currentPrice = data.current_price;
+            elemFinal.priceChange = data.price_change_24h;
+            elemFinal.holdingsDollars = data.current_price * elemFinal.totalAmount;
+            elemFinal.averagePrice = elemFinal.totalDollars / elemFinal.totalAmount,
+            elemFinal.pnlDollars = (elemFinal.totalAmount * data.current_price) - elemFinal.totalDollars;
+            elemFinal.pnlPercent = elemFinal.totalAmount * data.current_price * (1 - (elemFinal.totalDollars / 100));
+            elemFinal.image = data.image;
+            elemFinal.symbol = data.symbol;
+          }
+        });
+        console.log('serverData: ', serverData);
 
         tablePortfolio.innerHTML = `
-        <tr>
-                <th>Coin</th>
-                <th>Price</th>
-                <th>Holdings</th>
-                <th>Avg. Price</th>
-                <th>Profit/Loss</th>
+              <tr>
+                  <th>Coin</th>
+                  <th>Price</th>
+                  <th>Holdings</th>
+                  <th>Avg.Price</th>
+                  <th>Profit/Loss</th>
               </tr>
-              ${transactionsData.map((coin) => (`
-                <tr>
+              ${serverData.map((coin) => (
+    `
+              <tr>
                   <td>
                     <span class="coin-logo">
-                      <img class="coin-logo" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC logo" />
+                      <img class="coin-logo" src="${coin.image}"  alt="${coin.symbol} logo" />
                     </span>
-                    <span class="coin-name">Bitcoin</span>
-                    <span class="coin-short">BTC</span>
+                    <span class="coin-name">${coin.name}</span>
+                    <span class="coin-short">${coin.symbol}</span>
                   </td>
-                  <td>$30000</td>
-                  <td>
-                    <span class="holdings-dollar">$20000</span>
-                    <span class="holdings-coins">0.7BTC</span>
+                  <td>${coin.currentPrice.toFixed(2).toLocaleString()}</td>
+                  <td class="space-between">
+                    <span class="holdings-dollar">$${coin.totalDollars.toLocaleString()}</span>
+                    <span class="holdings-coins">${coin.totalAmount}${coin.symbol.toUpperCase()}</span>
                   </td>
-                  <td>$30.000</td>
-                  <td>
-                    <span class="profit-loss-dollar">$-343</span>
-                    <span class="profit-loss-percent">-12%</span>
+                  <td>$${coin.averagePrice.toFixed(2).toLocaleString()}</td>
+                  <td class="space-between">
+                    <span class="profit-loss-dollar">$${coin.pnlDollars.toFixed(2).toLocaleString()}</span>
+                    <span class="profit-loss-percent">${coin.pnlPercent.toFixed(2)}%</span>
                   </td>
                 </tr>
                 `
   ))}
-        `;
+              `;
+
+        coinSelect.innerHTML = `
+              ${serverData.map((coin) => (
+    `
+                <option value="${coin.name}">${coin.name}</option>
+                `
+  ))
+}
+              `;
       }
 
       if (tableTopCoins) {
@@ -64,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         <span class="coin-logo">
           <img class="coin-logo" src="${coin.image}" alt="${coin.symbol} logo" />
         </span>
-        <span class="coin-name"> ${coin.name}</span>
+        <span class="coin-name">${coin.name}</span>
         <span class="coin-short">${coin.symbol}</span>
       </td>
       <td>$${coin.current_price.toFixed(2)}</td>
