@@ -1,0 +1,123 @@
+@media (min-width: 1400px) {
+  .portfolio-table-wrapper {
+    padding-left: 16%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .table-container {
+    flex-wrap: wrap-reverse;
+  }
+
+  .table_portfolio {
+    max-width: 100%;
+  }
+
+  .form {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .form__title {
+    display: none;
+  }
+
+  .table_dark {
+    border-top: 0;
+    border: 2px solid var(--blue-color);
+  }
+
+  .table {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .table-form-box {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 1050px) {
+  .form__group {
+    flex: 20%;
+  }
+
+  .adaptive {
+    display: none;
+  }
+
+  .container {
+    padding: 50px 10px 100px 120px;
+  }
+
+}
+
+@media (max-width: 992px) {
+  .header__item {
+    font-size: 50px;
+  }
+
+  .adaptive1000 {
+    display: none;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  .sidebar {
+    display: none;
+  }
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .portfolio-table-wrapper {
+    padding: 0;
+  }
+
+  .coin-short {
+    display: none;
+  }
+
+  .table_dark th {
+    padding: 5px;
+  }
+
+  .table_dark td {
+    padding: 5px;
+  }
+
+  .main-wrapper {
+    width: 92%;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .coin-logo {
+    display: none;
+  }
+
+  .adaptive500 {
+    display: none;
+  }
+
+}
+
+@media (max-width: 375px) {
+  .header__item {
+    font-size: 42px;
+  }
+
+  .adaptive375 {
+    display: none;
+  }
+
+}

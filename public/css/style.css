@@ -1,0 +1,453 @@
+@font-face {
+  font-family: "GT-America";
+  src: local("GT-America-Medium"),
+    url("/fonts/GT-America-Medium.woff2") format("woff2"),
+    url("/fonts/GT-America-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT-America";
+  src: local("GT-America-Bold"),
+    url("/fonts/GT-America-Bold.woff2") format("woff2"),
+    url("/fonts/GT-America-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-Bold"),
+    url("/fonts/Inter-Bold.woff2") format("woff2"),
+    url("/fonts/Inter-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --white-color: #fff;
+  --black-color: #000;
+  --dark-blue-color: #06061b;
+  --dark-blue-color-2: #08021e;
+  --blue-color: #161b44;
+  --blue-color-2: #120446;
+  --light-blue-color: #00d1ff;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: 'GT-America', sans-serif;
+  color: var(--white-color);
+  background-color: var(--dark-blue-color);
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Sidebar */
+
+.sidebar {
+  position: fixed;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0px;
+  left: 0px;
+  width: 160px;
+  height: 100%;
+  padding: 20px 5px;
+  padding-bottom: 20px;
+  border-right: 2px solid var(--blue-color);
+  font-family: 'GT-America', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  background: linear-gradient(0deg, var(--dark-blue-color-2) 0%, var(--blue-color-2) 146.21%);
+}
+
+.sidebar__logo {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.sidebar__img {
+  width: 70px;
+  height: 70px;
+}
+
+.nav__list {
+  flex-direction: column;
+  row-gap: 35px;
+  margin-bottom: 50px;
+  padding-left: 30px;
+}
+
+.nav__item-link {
+  color: var(--white-color);
+  opacity: 0.4;
+  transition: opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav__item-link:hover {
+  color: var(--light-blue-color);
+  opacity: unset;
+}
+
+.nav__item-link:active {
+  color: var(--light-blue-color);
+}
+
+.bottom__list {
+  flex-direction: column;
+  row-gap: 35px;
+  margin-bottom: 50px;
+  padding-left: 30px;
+}
+
+.sidebar__links {
+  padding: 5px;
+  column-gap: 10px;
+}
+
+.sidebar__link {
+  display: block;
+  width: 35px;
+  height: 35px;
+}
+
+.sidebar__svg {
+  fill: var(--white-color);
+}
+
+/* Profile settings */
+
+.profile-settings {
+  /* align-items: center; */
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.profile-settings__wrapper {
+  display: flex;
+}
+
+.profile-settings__link {
+  align-items: baseline;
+  height: 32px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid rgb(16, 16, 78);
+  line-height: 14px;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  background: rgb(9, 9, 47);
+  cursor: pointer;
+}
+
+.profile-settings__round {
+  margin-right: 10px;
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: #00d1ff;
+}
+
+.profile-settings__button {
+  height: 32px;
+  line-height: 14px;
+  padding: 5px 10px;
+  border: 1px solid rgb(16, 16, 78);
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  background: rgb(9, 9, 47);
+  cursor: pointer;
+}
+
+.profile-settings__button:not(:last-child) {
+  margin-right: 10px;
+}
+
+.profile-span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 5px;
+  border-radius: 100%;
+  background-color: rgb(41, 182, 175);
+}
+
+.dark-mode-svg {
+  width: 15px;
+  height: 15px;
+}
+
+.dark-mode-svg path {
+  fill: var(--white-color);
+}
+
+.container {
+  padding: 100px 30px 100px 100px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header__item {
+  margin-bottom: 10px;
+  text-align: left;
+  font-family: 'GT-America', sans-serif;
+  font-size: 80px;
+  color: rgb(255, 255, 255);
+}
+
+/* Table */
+
+.table-container {
+  justify-content: flex-start;
+}
+
+.table {
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.table_dark {
+  /* min-width: 740px; */
+  margin-bottom: 20px;
+  border-top: 3px solid var(--light-blue-color);
+  font-family: "GT-America", Sans-Serif;
+  font-size: 14px;
+  text-align: right;
+  border-collapse: collapse;
+  background: rgba(9, 9, 47, 0.8);
+}
+
+.table_dark th {
+  padding: 12px 17px;
+  border-bottom: 2px solid rgb(22, 27, 68);
+  color: rgb(130, 130, 149);
+}
+
+.table_dark td:first-child,
+.table_dark th:first-child {
+  display: flex;
+  column-gap: 5px;
+  text-align: left;
+}
+
+.table_dark td {
+  padding: 7px 17px;
+  border-bottom: 2px solid rgb(22, 27, 68);
+  color: #CAD4D6;
+  text-decoration: underline;
+  text-decoration-color: rgba(9, 9, 47, 0.8);
+  transition: text-decoration-color 0.3s ease-in-out;
+}
+
+.table_dark tr:last-child td {
+  border-bottom: none;
+}
+
+.table_dark td:last-child {
+  border-right: none;
+}
+
+.table_dark tr:hover td {
+  text-decoration-color: var(--light-blue-color);
+}
+
+.coin-logo {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border-radius: 12px;
+}
+
+.coin-short {
+  color: rgb(130, 130, 149);
+  text-transform: uppercase;
+}
+
+.form-container {
+  align-self: flex-start;
+}
+
+.edit-form__select,
+.edit-form__input {
+  margin-right: 10px;
+  padding: 0 10px;
+  border: 1px solid rgb(22, 27, 68);
+  font-family: "GT-America";
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  background-color: rgb(9, 9, 47);
+}
+
+.edit-form__button {
+  padding: 5px 30px;
+  border: 1px solid rgb(237, 30, 255);
+  font-size: 16px;
+  color: rgb(237, 30, 255);
+  background-color: rgb(22, 27, 68);
+  box-shadow: rgb(237 30 255 / 60%) 0px 0px 15px;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.edit-form__button:hover {
+  background-color: rgb(237, 30, 255);
+  color: rgb(6, 6, 27);
+}
+
+/* Main */
+
+.main-wrapper {
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 66%;
+}
+
+
+/* portfolio */
+
+.portfolio-table-wrapper {
+  padding-left: 8%;
+}
+
+.profit-loss-dollar,
+.holdings-dollar {
+  margin-right: 10px;
+}
+
+/* Sign In/Sign Up */
+
+.form__title {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.form {
+  flex-direction: column;
+  gap: 20px;
+  max-width: 250px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 2px solid var(--blue-color);
+  border-top: 3px solid var(--light-blue-color);
+  background: linear-gradient(0deg, var(--dark-blue-color-2) 0%, var(--blue-color-2) 146.21%);
+}
+
+.form__group {
+  flex-direction: column;
+}
+
+.form__label {
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: var(--white-color);
+  opacity: 0.4;
+}
+
+.form__input {
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid rgb(22, 27, 68);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  background-color: rgb(9, 9, 47);
+}
+
+.form__button {
+  margin-top: 20px;
+}
+
+#signup-form {
+  max-width: 250px;
+}
+
+#signin-form {
+  max-width: 250px;
+}
+
+
+/* 404 */
+
+.page-404 {
+  margin-bottom: 10px;
+  color: rgb(6, 6, 27);
+  font-family: "Inter";
+  text-shadow: rgb(65 199 157) 0px 0px 4px, rgb(65 199 157) 0px 0px 4px, rgb(65 199 157) 0px 0px 4px, rgb(65 199 157) 0px 0px 4px, rgb(65 199 157) 0px 0px 4px, rgb(65 199 157) 0px 0px 4px;
+  font-size: 180px;
+}
+
+.page-not-found {
+  font-family: "GT-America";
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+}
+
+.container-404 {
+  flex-direction: column;
+  align-items: center;
+}
+
+.table_dark td.green {
+  color: green;
+  text-shadow: green 0 0 4px;
+}
+
+.table_dark td.red {
+  color: rgb(196, 63, 39);
+  text-shadow: rgb(196, 63, 39) 0 0 4px;
+}
+
+.error {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(196, 63, 39);
+  text-shadow: rgb(196, 63, 39) 0 0 4px;
+}
