@@ -43,23 +43,39 @@ document.addEventListener('DOMContentLoaded', async (event) => {
               </tr>
               ${serverData.map((coin) => (
     `
-              <tr>
+                <tr>
                   <td>
                     <span class="coin-logo">
-                      <img class="coin-logo" src="${coin.image}"  alt="${coin.symbol} logo" />
+                      <img class="coin-logo" src="${coin.image}" alt="${coin.symbol} logo" />
                     </span>
-                    <span class="coin-name">${coin.name}</span>
-                    <span class="coin-short">${coin.symbol}</span>
+                    <span class="coin-name">
+                      ${coin.name}
+                    </span>
+                    <span class="coin-short">
+                      ${coin.symbol}
+                    </span>
                   </td>
-                  <td>${coin.currentPrice.toFixed(2).toLocaleString()}</td>
-                  <td>$ ${coin.transactionTotal.toLocaleString()}</td>
-                  <td class="adaptive">${coin.transactionAmount}</td>
-                  <td class="adaptive">$ ${coin.averagePrice.toFixed(2).toLocaleString()}</td>
-                  <td class="adaptive375">${coin.pnlDollars.toFixed(2).toLocaleString()}</td>
-                  <td class="${coin.pnlPercent >= 0 ? 'green' : 'red'}">${coin.pnlPercent.toFixed(2)} %</td>
+                  <td>
+                    ${coin.currentPrice.toFixed(2).toLocaleString()}
+                  </td>
+                  <td>
+                    $ ${coin.transactionTotal.toLocaleString()}
+                  </td>
+                  <td class="adaptive">
+                    ${coin.transactionAmount}
+                  </td>
+                  <td class="adaptive">
+                    $ ${coin.averagePrice.toFixed(2).toLocaleString()}
+                  </td>
+                  <td class="adaptive375">
+                    ${coin.pnlDollars.toFixed(2).toLocaleString()}
+                  </td>
+                  <td class="${coin.pnlPercent >= 0 ? 'green' : 'red'}">
+                    ${coin.pnlPercent.toFixed(2)} %
+                  </td>
                 </tr>
-                `
-  ))}
+`
+  )).join('')}
               `;
 
         coinSelect.innerHTML = `
@@ -95,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
       <td class="${coin.price_change_percentage_24h >= 0 ? 'green' : 'red'}">${coin.price_change_percentage_24h.toFixed(2)}%</td>
       <td class="adaptive1000">$${coin.market_cap.toLocaleString()}</td>
     </tr>`
-  ))}
+  )).join('')}
       `;
       }
 
@@ -136,35 +152,51 @@ document.addEventListener('DOMContentLoaded', async (event) => {
             }
           });
           tablePortfolio.innerHTML = `
-              <tr>
-                  <th>Coin</th>
-                  <th>Price</th>
-                  <th>Hold $</th>
-                  <th>Coins</th>
-                  <th>Avg.Price</th>
-                  <th>PNL $</th>
-                  <th>PNL %</th>
-              </tr>
-              ${serverData.map((coin) => (
+          <tr>
+              <th>Coin</th>
+              <th>Price</th>
+              <th>Hold $</th>
+              <th class="adaptive">Coins</th>
+              <th class="adaptive">Avg.Price</th>
+              <th class="adaptive375">PNL $</th>
+              <th>PNL %</th>
+          </tr>
+          ${serverData.map((coin) => (
     `
-              <tr>
-                  <td>
-                    <span class="coin-logo">
-                      <img class="coin-logo" src="${coin.image}"  alt="${coin.symbol} logo" />
-                    </span>
-                    <span class="coin-name">${coin.name}</span>
-                    <span class="coin-short">${coin.symbol}</span>
-                  </td>
-                  <td>${coin.currentPrice.toFixed(2).toLocaleString()}</td>
-                  <td>$ ${coin.transactionTotal.toLocaleString()}</td>
-                  <td>${coin.transactionAmount}</td>
-                  <td>$ ${coin.averagePrice.toFixed(2).toLocaleString()}</td>
-                  <td>${coin.pnlDollars.toFixed(2).toLocaleString()}</td>
-                  <td class="${coin.pnlPercent >= 0 ? 'green' : 'red'}">${coin.pnlPercent.toFixed(2)} %</td>
-                </tr>
-                `
-  ))}
-              `;
+            <tr>
+              <td>
+                <span class="coin-logo">
+                  <img class="coin-logo" src="${coin.image}" alt="${coin.symbol} logo" />
+                </span>
+                <span class="coin-name">
+                  ${coin.name}
+                </span>
+                <span class="coin-short">
+                  ${coin.symbol}
+                </span>
+              </td>
+              <td>
+                ${coin.currentPrice.toFixed(2).toLocaleString()}
+              </td>
+              <td>
+                $ ${coin.transactionTotal.toLocaleString()}
+              </td>
+              <td class="adaptive">
+                ${coin.transactionAmount}
+              </td>
+              <td class="adaptive">
+                $ ${coin.averagePrice.toFixed(2).toLocaleString()}
+              </td>
+              <td class="adaptive375">
+                ${coin.pnlDollars.toFixed(2).toLocaleString()}
+              </td>
+              <td class="${coin.pnlPercent >= 0 ? 'green' : 'red'}">
+                ${coin.pnlPercent.toFixed(2)} %
+              </td>
+            </tr>
+`
+  )).join('')}
+          `;
         }
       });
     } catch (error) {
