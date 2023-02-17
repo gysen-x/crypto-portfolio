@@ -402,6 +402,14 @@ body {
   margin-top: 20px;
 }
 
+#signup-form {
+  max-width: 250px;
+}
+
+#signin-form {
+  max-width: 250px;
+}
+
 
 /* 404 */
 

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
             elemFinal.holdingsDollars = data.current_price * elemFinal.transactionAmount;
             elemFinal.averagePrice = elemFinal.transactionTotal / elemFinal.transactionAmount,
             elemFinal.pnlDollars = (elemFinal.transactionAmount * data.current_price) - elemFinal.transactionTotal;
-            elemFinal.pnlPercent = 100 / ((data.current_price * elemFinal.transactionAmount) / ((elemFinal.transactionAmount * data.current_price) - elemFinal.transactionTotal));
+            elemFinal.pnlPercent = (data.current_price - (elemFinal.transactionTotal / elemFinal.transactionAmount)) / (elemFinal.transactionTotal / elemFinal.transactionAmount) * 100;
             elemFinal.image = data.image;
             elemFinal.symbol = data.symbol;
           }
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
               elemFinal.holdingsDollars = data.current_price * elemFinal.transactionAmount;
               elemFinal.averagePrice = elemFinal.transactionTotal / elemFinal.transactionAmount,
               elemFinal.pnlDollars = (elemFinal.transactionAmount * data.current_price) - elemFinal.transactionTotal;
-              elemFinal.pnlPercent = 100 / ((data.current_price * elemFinal.transactionAmount) / ((elemFinal.transactionAmount * data.current_price) - elemFinal.transactionTotal));
+              elemFinal.pnlPercent = (data.current_price - (elemFinal.transactionTotal / elemFinal.transactionAmount)) / (elemFinal.transactionTotal / elemFinal.transactionAmount) * 100;
               elemFinal.image = data.image;
               elemFinal.symbol = data.symbol;
             }
